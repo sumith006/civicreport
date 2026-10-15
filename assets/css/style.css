@@ -1,0 +1,234 @@
+/* =========================================
+   1. GLOBAL VARIABLES & RESET
+   ========================================= */
+:root {
+    /* Brand Colors */
+    --primary-color: #4e54c8;       /* Deep Blue */
+    --secondary-color: #8f94fb;     /* Light Purple */
+    --accent-color: #ff6b6b;        /* Soft Red */
+    --success-color: #00b09b;       /* Teal Green */
+    --warning-color: #fce38a;       /* Soft Yellow */
+    
+    /* Text & Backgrounds */
+    --dark-text: #2d3436;
+    --light-text: #f4f7f6;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Poppins', sans-serif; /* Requires Google Font link in header */
+    color: var(--dark-text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global Transition for smooth hover effects */
+a, button, .btn, .card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* =========================================
+   2. NAVBAR (Glassmorphism)
+   ========================================= */
+.navbar {
+    background: rgba(33, 37, 41, 0.85) !important; /* Semi-transparent dark */
+    backdrop-filter: blur(12px); /* The "Glass" blur effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-left: 10px;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   3. CARDS & CONTAINERS
+   ========================================= */
+.card {
+    border: none;
+    border-radius: 16px;
+    background: var(--glass-bg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+    
+    /* Animation Entry */
+    opacity: 0; 
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Stagger Animations */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    padding: 18px 25px;
+    font-size: 1.1rem;
+}
+
+/* Admin Dashboard Specific Cards */
+.bg-primary { background: linear-gradient(45deg, #4e54c8, #8f94fb) !important; }
+.bg-danger  { background: linear-gradient(45deg, #ff416c, #ff4b2b) !important; }
+.bg-success { background: linear-gradient(45deg, #00b09b, #96c93d) !important; }
+
+/* =========================================
+   4. BUTTONS & FORMS
+   ========================================= */
+.btn {
+    border-radius: 50px; /* Pill shape */
+    padding: 10px 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.btn-danger {
+    background: linear-gradient(to right, #eb3349, #f45c43);
+    animation: pulse-red 2s infinite;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 1px solid #e1e1e1;
+    background-color: #f8f9fa;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(143, 148, 251, 0.2);
+}
+
+/* =========================================
+   5. MAP & IMAGES
+   ========================================= */
+#map {
+    width: 100%;
+    height: 350px;
+    border-radius: 12px;
+    border: 4px solid #fff;
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
+}
+
+.img-thumbnail {
+    border-radius: 10px;
+    border: none;
+    box-shadow: var(--shadow-sm);
+}
+
+/* =========================================
+   6. CUSTOM BADGES (Status)
+   ========================================= */
+.badge {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* These match your PHP status logic */
+.badge.bg-warning {
+    background-color: #ffeaa7 !important;
+    color: #d63031;
+}
+.badge.bg-success {
+    background-color: #55efc4 !important;
+    color: #006266;
+}
+.badge.bg-secondary {
+    background-color: #dfe6e9 !important;
+    color: #636e72;
+}
+
+/* =========================================
+   7. KEYFRAME ANIMATIONS
+   ========================================= */
+
+/* Slide Up & Fade In */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gentle Pulse (for Emergency Buttons) */
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(235, 51, 73, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(235, 51, 73, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(235, 51, 73, 0);
+    }
+}
+
+/* Fade In */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+footer {
+    background: #2d3436 !important;
+    color: #b2bec3 !important;
+    border-top: 4px solid var(--primary-color);
+    margin-top: auto;
+}

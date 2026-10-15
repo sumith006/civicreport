@@ -1,0 +1,57 @@
+@startuml
+left to right direction
+
+actor Citizen
+actor "Supervisor/Executive" as Supervisor
+actor "Field Worker" as Worker
+
+rectangle "BCIR System" {
+  ' Citizen use cases
+  (Register Account)
+  (Login / Logout)
+  (Report Issue)
+  (View My History)
+  (Upload Proof for Resolution)
+  
+  ' Supervisor/Executive use cases
+  (View Executive Dashboard)
+  (Add New Field Worker)
+  (Assign Task to Worker)
+  (Verify Resolution)
+  
+  ' Field Worker use cases
+  (View Assigned Tasks)
+  (Navigate to Location)
+  (Upload Proof & Mark as Resolved)
+}
+
+' Connect Citizen to use cases
+Citizen --> (Register Account)
+Citizen --> (Login / Logout)
+Citizen --> (Report Issue)
+Citizen --> (View My History)
+Citizen --> (Upload Proof for Resolution)
+
+' Connect Supervisor to use cases
+Supervisor --> (Login / Logout)
+Supervisor --> (View Executive Dashboard)
+Supervisor --> (Add New Field Worker)
+Supervisor --> (Assign Task to Worker)
+Supervisor --> (Verify Resolution)
+
+' Connect Field Worker to use cases
+Worker --> (Login / Logout)
+Worker --> (View Assigned Tasks)
+Worker --> (Navigate to Location)
+Worker --> (Upload Proof & Mark as Resolved)
+
+' Add extension notes exactly as in your image
+note right of (Report Issue)
+  (Upload Photo/GPS)
+end note
+
+note right of (Verify Resolution)
+  (Before vs After)
+end note
+
+@enduml

@@ -1,0 +1,1 @@
+D:\xampp\php\php -r "echo password_hash('12345', PASSWORD_BCRYPT);"
